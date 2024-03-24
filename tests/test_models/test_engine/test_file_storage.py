@@ -6,53 +6,45 @@ from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 import os
 import json
-
+classes = {"BaseModel": BaseModel}
 
 class Test_FileStorage(unittest.TestCase):
 
-    def setUp(self):
-        self.storage = FileStorage()
-        self.obj = BaseModel()
+    def test_all_returns_dict(self):
+        storage = FileStorage()
+        new_dict = storage.all()
+        self.assertEqual(type(new_dict), dict)
+        self.assertIs(new_dict, storage._FileStorage__objects)
 
-    def tearDown(self):
-        if os.path.exists(self.storage.get_file_path()):
-            os.remove(self.storage.get_file_path())
-
-        if self.storage:
-            self.storage.close()
-        if self.obj:
-            self.obj.close()
-
-    def test_object_is_dict(self):
-        self.assertEqual(type(self.storage.get_objects()), dict)
-        self.assertTrue(self.storage.get_objects() != {})
-
-    def test_file_path_is_not_empty(self):
-        self.assertTrue(self.storage.get_file_path())
-
-    def test_BaseModel_save(self):
-        old_time = self.obj.updated_at
-        self.obj.name = "Yadamzer"
-        self.obj.save()
-        new_time = self.obj.updated_at
-
-        self.assertNotEqual(old_time, new_time)
-        self.assertTrue(os.path.exists(self.storage.get_file_path()))
-
-    def test_init_BaseModel(self):
-        obj_dict = {'name': 'Yadamze', 'age': '21', 'sex': 'M'}
-        Base_obj = BaseModel(obj_dict)
-
-        self.assertTrue(hasattr(self.Base_obj, "age"))
-
-
-    def test_reload(self):
-        self.assertTrue(self.storage.get_objects() != {})
+    def test_new(self):
+        storage = FileStorage()
+        save = FileStorage._FileStorage__objects
+        FileStorage._FileStorage__objects = {}
+        test_dict = {}
+        for key, value in classes.items():
+            with self.subTest(key=key, value=value):
+                instance = value()
+                instance_key = instance.__class__.__name__ + "." + instance.id
+                storage.new(instance)
+                test_dict[instance_key] = instance
+                self.assertEqual(test_dict, storage._FileStorage__objects)
+        FileStorage._FileStorage__objects = save
 
     def test_save(self):
-        with open(self.storage.get_file_storage(), "r") as fp:
-            file_content = fp.read()
-        obj_dict = obj.__dict__
-        obj_dict['__class__'] = obj.__class__.__name__
-
-        self.assertEqual(file_content, json.dumps(obj_dict))
+        os.remove("memory.json")
+        storage = FileStorage()
+        new_dict = {}
+        for key, value in classes.items():
+            instance = value()
+            instance_key = instance.__class__.__name__ + "." + instance.id
+            new_dict[instance_key] = instance
+        save = FileStorage._FileStorage__objects
+        FileStorage._FileStorage__objects = new_dict
+        storage.save()
+        FileStorage._FileStorage__objects = save
+        for key, value in new_dict.items():
+            new_dict[key] = value.to_dict()
+        string = json.dumps(new_dict)
+        with open("memory.json", "r") as f:
+            js = f.read()
+        self.assertEqual(json.loads(string), json.loads(js))
