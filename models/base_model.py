@@ -38,6 +38,9 @@ class BaseModel():
     def all(self):
         return models.storage.all()
 
+    def update_object(self, key, attr, value):
+        models.storage.update_object(key, attr, value)
+
     def to_dict(self):
         """
         returns a dictionary containing

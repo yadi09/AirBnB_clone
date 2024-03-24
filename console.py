@@ -90,15 +90,49 @@ class HBNBCommand(cmd.Cmd):
             if cls_name != '':
                 print("** class doesn't exist **")
                 empty = False
-        try:
-            all_objs = self.obj.all()
-            for key, value in all_objs.items():
-                objs_list.append(str(value))
-            print(objs_list)
-        except Exception:
-            if empty:
-                print([])
+        if empty:
+            try:
+                all_objs = self.obj.all()
+                for key, value in all_objs.items():
+                    objs_list.append(str(value))
+                    print(objs_list)
+            except Exception:
+                if empty:
+                    print([])
 
+    def do_update(self, args):
+        args_list = args.split(" ")
+        TF = True
+
+        if args == '':
+            print("** class name missing **")
+            TF = False
+        elif TF:
+            try:
+                cls_name = globals()[args_list[0]]
+            except Exception:
+                print("** class doesn't exist **")
+                TF = False
+
+        if len(args_list) < 2 and TF:
+            print("** instance id missing **")
+            TF = False
+        elif TF:
+            key = ".".join(args_list[:2])
+            try:
+                key_value = self.obj.all()[key]
+            except Exception:
+                print("** no instance found **")
+                TF = False
+
+        if len(args_list) < 3 and TF:
+            print("** attribute name missing **")
+            TF = False
+        elif len(args_list) < 4 and TF:
+            print("** value missing **")
+            TF = False
+        elif TF:
+            self.obj.update_object(key, args_list[2], args_list[3].replace("\"", ""))
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

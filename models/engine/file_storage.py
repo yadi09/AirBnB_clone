@@ -12,6 +12,9 @@ class FileStorage():
     __file_path = "memory.json"
     __objects = {}
 
+    def update_object(self, key, attr, value):
+        self.__objects[key].__dict__[attr] = value
+
     def all(self):
         return self.__objects
 
