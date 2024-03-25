@@ -47,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
             parts.reverse()
             line = " ".join(parts)
         return cmd.Cmd.precmd(self, line)
-    
+
     def do_create(self, cls_name=None):
         arg_list = cls_name.split(" ")
         if cls_name == '':
