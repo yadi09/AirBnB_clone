@@ -42,9 +42,17 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     def precmd(self, line):
-        if '.' in line:
+        if '.' in line and "()" in line:
             parts = line.replace("()", "").split(".")
             parts.reverse()
+            line = " ".join(parts)
+        elif "." in line and "(\"" in line:
+            parts = line.replace(".", " ")
+            parts = parts.replace("(\"", " ").replace("\")", " ")
+            parts = parts.split(" ")
+            temp = parts[0]
+            parts[0] = parts[1]
+            parts[1] = temp
             line = " ".join(parts)
         return cmd.Cmd.precmd(self, line)
 
