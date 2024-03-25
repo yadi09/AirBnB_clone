@@ -8,6 +8,7 @@ import os
 import json
 classes = {"BaseModel": BaseModel}
 
+
 class Test_FileStorage(unittest.TestCase):
 
     def test_all_returns_dict(self):

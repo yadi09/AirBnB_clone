@@ -15,7 +15,7 @@ from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     "entry point of the command interpreter:"
-    
+
     prompt = "(hbnb) "
 
     def do_quit(self, arg):
@@ -138,7 +138,10 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             TF = False
         elif TF:
-            self.obj.update_object(key, args_list[2], args_list[3].replace("\"", ""))
+            attr = args_list[2]
+            value = args_list[3]
+            self.obj.update_object(key, attr, value.replace("\"", ""))
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

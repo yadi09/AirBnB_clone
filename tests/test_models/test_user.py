@@ -1,6 +1,7 @@
 from models.user import User
 import unittest
 
+
 class test_user(unittest.TestCase):
 
     def test_email(self):

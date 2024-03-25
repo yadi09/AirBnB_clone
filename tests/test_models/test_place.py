@@ -1,6 +1,7 @@
 from models.place import Place
 import unittest
 
+
 class test_user(unittest.TestCase):
 
     def test_city_id(self):

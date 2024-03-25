@@ -1,6 +1,7 @@
 from models.city import City
 import unittest
 
+
 class test_user(unittest.TestCase):
 
     def test_state_id(self):

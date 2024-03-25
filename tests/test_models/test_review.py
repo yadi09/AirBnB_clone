@@ -1,6 +1,7 @@
 from models.review import Review
 import unittest
 
+
 class test_user(unittest.TestCase):
 
     def test_place_id(self):

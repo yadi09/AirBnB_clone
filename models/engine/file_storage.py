@@ -11,7 +11,13 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-classes = {"BaseModel": BaseModel, "User": User, "State": State, "City": City, "Amenity": Amenity, "Place": Place, "Review": Review}
+classes = {
+    "BaseModel": BaseModel,
+    "User": User, "State": State,
+    "City": City, "Amenity": Amenity,
+    "Place": Place, "Review": Review
+}
+
 
 class FileStorage():
     "class that serializes deserializes instances"
@@ -23,7 +29,6 @@ class FileStorage():
 
     def all(self):
         return self.__objects
-
 
     def new(self, obj):
         self.temp_obj = obj
