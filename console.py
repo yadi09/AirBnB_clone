@@ -46,9 +46,18 @@ class HBNBCommand(cmd.Cmd):
             parts = line.replace("()", "").split(".")
             parts.reverse()
             line = " ".join(parts)
-        elif "." in line and "(\"" in line:
+        elif "." in line and "(\"" in line and "\", \"" not in line:
             parts = line.replace(".", " ")
             parts = parts.replace("(\"", " ").replace("\")", " ")
+            parts = parts.split(" ")
+            temp = parts[0]
+            parts[0] = parts[1]
+            parts[1] = temp
+            line = " ".join(parts)
+        elif "." in line and "\", \"" in line:
+            parts = line.replace(".", " ")
+            parts = parts.replace("(\"", " ").replace("\")", " ")
+            parts = parts.replace("\", \"", " ")
             parts = parts.split(" ")
             temp = parts[0]
             parts[0] = parts[1]

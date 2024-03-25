@@ -1,26 +1,8 @@
 {
-    "User.a3d2f989-5bd2-4b0b-ac51-0d5ed56b837c": {
-        "id": "a3d2f989-5bd2-4b0b-ac51-0d5ed56b837c",
-        "created_at": "2024-03-25T02:11:50.596221",
-        "updated_at": "2024-03-25T02:11:50.596280",
-        "__class__": "User"
-    },
-    "User.41811f05-74da-493e-a428-741eb7afd7f1": {
-        "id": "41811f05-74da-493e-a428-741eb7afd7f1",
-        "created_at": "2024-03-25T02:11:54.037712",
-        "updated_at": "2024-03-25T02:11:54.037743",
-        "__class__": "User"
-    },
-    "BaseModel.dfac8751-f864-4664-9c25-8be8fbbcdda1": {
-        "id": "dfac8751-f864-4664-9c25-8be8fbbcdda1",
-        "created_at": "2024-03-25T10:56:03.120181",
-        "updated_at": "2024-03-25T10:56:03.120211",
-        "__class__": "BaseModel"
-    },
-    "User.64dce602-b8bc-40cf-b5fd-72d4e60274db": {
-        "id": "64dce602-b8bc-40cf-b5fd-72d4e60274db",
-        "created_at": "2024-03-25T10:57:21.180316",
-        "updated_at": "2024-03-25T10:57:56.983931",
+    "User.a77073b9-6ae6-4ee3-9fc2-6046499193ba": {
+        "id": "a77073b9-6ae6-4ee3-9fc2-6046499193ba",
+        "created_at": "2024-03-25T11:03:44.583644",
+        "updated_at": "2024-03-25T11:03:44.583661",
         "__class__": "User"
     }
 }
