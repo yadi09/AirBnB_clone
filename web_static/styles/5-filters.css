@@ -18,8 +18,31 @@
     width: 20%;
     border-radius: 4px;
     margin-right: 30px;
+    margin-left: auto;
 }
 
 button:hover {
     opacity: 0.9;
+}
+
+.filters div {
+    height: 100%;
+    width: 25%;
+}
+
+.filters .locations {
+    border-right: 1px solid #DDDDDD;
+}
+
+.filters div h3 {
+    font-weight: 600;
+    margin-top: 17px;
+    margin-left: 20%;
+}
+
+.filters div h4 {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 15px;
+    margin-left: 20%;
 }
