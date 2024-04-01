@@ -21,7 +21,7 @@
     margin-left: auto;
 }
 
-button:hover {
+.filters button:hover {
     opacity: 0.9;
 }
 
@@ -47,7 +47,7 @@ button:hover {
     margin-left: 20%;
 }
 
-.locations .popover {
+.popover {
     list-style-type: none;
     background-color: #FAFAFA;
     border: 1px solid #DDDDDD;
@@ -65,24 +65,13 @@ button:hover {
     margin-top: 25px;
 }
 
-.locations:hover .popover {
+.amenities:hover .popover,
+.locations:hover .popover,
+.popover:hover .popover {
     display: block;
 }
 
-
-.amenities .popover {
-    list-style-type: none;
-    background-color: #FAFAFA;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px;
-    padding: 40px;
-    display: none;
-}
 
 .amenities .popover li {
     margin-top: 2px;
-}
-
-.amenities:hover .popover {
-    display: block;
 }
